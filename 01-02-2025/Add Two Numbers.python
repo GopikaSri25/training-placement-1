@@ -1,0 +1,23 @@
+class Solution(object):
+    carry = 0
+    def addTwoNumbers(self, t1, t2):
+        if t1 is None and t2 is None and self.carry == 0:
+            return None
+
+        if t1 and t2:
+            val = t1.val + t2.val + self.carry
+        elif t1:
+            val = t1.val + self.carry
+        elif t2:
+            val = t2.val + self.carry
+        else:
+            val = self.carry
+        self.carry = val // 10
+        val = val % 10
+        if t1 != None:
+            t1 = t1.next
+        if t2 != None:
+            t2 = t2.next
+        node = ListNode(val)
+        node.next = self.addTwoNumbers(t1,t2)
+        return node

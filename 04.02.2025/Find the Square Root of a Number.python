@@ -1,0 +1,2 @@
+num = 49
+print(num ** 0.5)
